@@ -2,9 +2,9 @@ puts "🌱 Seeding spices..."
 # Seed your database here
 # rake db:reset
 
-Restaurant.create(name: "Joon Omakase")
-Restaurant.create(name: "The Alcove")
-Restaurant.create(name: "Antidote")
+Restaurant.create(name: "Joon Omakase", location: "158-14 Northern Blvd Suite LL1, Flushing, NY 11358")
+Restaurant.create(name: "The Alcove", location: "41-11 49th St, Queens, NY 11104")
+Restaurant.create(name: "Antidote", location: "66 S 2nd St, Brooklyn, NY 11249")
 
 Client.create(name: "Edward")
 Client.create(name: "John")
