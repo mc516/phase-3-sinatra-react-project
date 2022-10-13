@@ -3,12 +3,6 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   #http://localhost:9292/restaurants
-  get '/' do
-    { message: "Good luck with your project!" }.to_json
-    # restaurants = Restaurant.all
-    # restaurant.to_json
-  end
-
   get '/restaurants' do 
     restaurants = Restaurant.all
     restaurants.to_json
@@ -33,6 +27,14 @@ class ApplicationController < Sinatra::Base
     reviews.to_json
   end
 
+  patch '/reviews/:id' do
+    review = Review.find(params[:id])
+    review.update(rating: params[:rating])
+    review.update(comment: params[:comment])
+
+  
+    review.to_json
+  end
 
 
 
