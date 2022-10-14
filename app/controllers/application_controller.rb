@@ -31,9 +31,21 @@ class ApplicationController < Sinatra::Base
     review = Review.find(params[:id])
     review.update(rating: params[:rating])
     review.update(comment: params[:comment])
-
-  
     review.to_json
+  end
+
+  post '/reviews/' do
+    client = Client.find_or_create_by(name: params[:name])
+
+    new_review = Review.create(
+      rating: params[:rating],
+      comment: params[:comment],
+      restaurant_id: params[:restaurant_id],
+      client_id: client.id
+    )
+
+    
+
   end
 
 
