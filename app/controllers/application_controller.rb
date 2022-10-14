@@ -16,15 +16,10 @@ class ApplicationController < Sinatra::Base
     new_restaurant.to_json 
   end
 
-  get '/clients' do
-    clients = Client.all
-    clients.to_json
-  end
-
   get '/reviews' do 
     # review = Review.select { |review| review.restaurant_id === params[:restaurant_id]}
     reviews = Review.all
-    reviews.to_json
+    reviews.to_json(include: :client)
   end
 
   patch '/reviews/:id' do
@@ -44,7 +39,7 @@ class ApplicationController < Sinatra::Base
       client_id: client.id
     )
 
-    
+    new_review.to_json
 
   end
 
