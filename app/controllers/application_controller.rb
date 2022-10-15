@@ -17,9 +17,13 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/reviews' do 
-    # review = Review.select { |review| review.restaurant_id === params[:restaurant_id]}
     reviews = Review.all
     reviews.to_json(include: :client)
+  end
+
+  get '/reviews/:id' do 
+    review = Review.find(params[:id])
+    review.to_json(include: :client)
   end
 
   patch '/reviews/:id' do
@@ -40,9 +44,13 @@ class ApplicationController < Sinatra::Base
     )
 
     new_review.to_json
-
   end
 
+  delete '/reviews/:id' do
+    review = Review.find(params[:id])
+    review.destroy
+   
+  end
 
 
 
