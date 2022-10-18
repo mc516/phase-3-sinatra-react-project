@@ -1,8 +1,8 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
-  
-  # Add your routes here
-  #http://localhost:9292/restaurants
+
+  #http://localhost:9292/
+
   get '/restaurants' do 
     restaurants = Restaurant.all
     restaurants.to_json
@@ -14,6 +14,11 @@ class ApplicationController < Sinatra::Base
       location: params[:location]
     )
     new_restaurant.to_json 
+  end
+
+  delete '/restaurants/:id' do
+    restaurant = Restaurant.find(params[:id])
+    restaurant.destroy
   end
 
   get '/reviews' do 
