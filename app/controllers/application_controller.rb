@@ -3,6 +3,7 @@ class ApplicationController < Sinatra::Base
 
   #http://localhost:9292/
 
+  #Create, Read, Delete for restaurants
   get '/restaurants' do 
     restaurants = Restaurant.all
     restaurants.to_json
@@ -21,6 +22,7 @@ class ApplicationController < Sinatra::Base
     restaurant.destroy
   end
 
+  #Full CRUD for reviews
   get '/reviews' do 
     reviews = Review.all
     reviews.to_json(include: :client)
