@@ -50,7 +50,7 @@ class ApplicationController < Sinatra::Base
       client_id: client.id
     )
 
-    new_review.to_json
+    new_review.to_json(include: :client)
   end
 
   delete '/reviews/:id' do
