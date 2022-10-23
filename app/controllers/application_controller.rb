@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
     review = Review.find(params[:id])
     review.update(rating: params[:rating])
     review.update(comment: params[:comment])
-    review.to_json
+    review.to_json(include: :client)
   end
 
   post '/reviews/' do
